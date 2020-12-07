@@ -17,10 +17,6 @@ public class PlayerController : MonoBehaviour
     bool isRun;
     bool isGrounded;
 
-    [Header("FootStep")]
-    public AudioClip[] concreteSteps;
-    public AudioClip[] woodSteps;
-
     string groundTag;
 
     void Start()
@@ -30,13 +26,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(!GameObject.FindObjectOfType<GameManager>().stopGame)
-        {
-            Movement();
-            Footstep();
-        }
-        else
-            speed = 0;
+        Movement();
+        Footstep();
     }
 
     void Movement()
@@ -91,10 +82,6 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(.15f);
             rb.AddForce(transform.up * jumpForce);
         }
-
-    }
-    void Footstep()
-    {
 
     }
 }
