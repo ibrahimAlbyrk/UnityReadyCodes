@@ -17,8 +17,6 @@ public class PlayerController : MonoBehaviour
     bool isRun;
     bool isGrounded;
 
-    string groundTag;
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -26,14 +24,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Movement();
-        Footstep();
+      Movement();
+      Footstep();
     }
 
     void Movement()
     {
 
-        // walk
+        #region move
         if (isRun)
             speed = Mathf.Lerp(speed,runSpeed,.07f);
         else
@@ -45,23 +43,23 @@ public class PlayerController : MonoBehaviour
         Vector3 rot = transform.TransformDirection(new Vector3(x,0,z)).normalized;
 
         rb.position += rot * speed * Time.deltaTime;
+        #endregion
 
-        //jump
+        #region jump
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             StartCoroutine(jump());
         }
-
+        #endregion
         //ground Detect
         isGrounded = groundDetector();
 
-        //run
-
+        #region run
         if (Input.GetKey(KeyCode.LeftShift))
             isRun = true;
         else
             isRun = false;
-
+        #endregion
         //Funcs
         bool groundDetector()
         {
@@ -69,7 +67,6 @@ public class PlayerController : MonoBehaviour
             Collider[] colls = Physics.OverlapSphere(groundDetectPos.position, .1f);
             foreach (Collider coll in colls)
             {
-                groundTag = coll.gameObject.tag;
                 if (coll.gameObject.tag == "ground")
                 {
                     return true;
