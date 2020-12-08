@@ -32,9 +32,9 @@ public class PlayerController : MonoBehaviour
 
         #region move
         if (isRun)
-            speed = Mathf.Lerp(speed,runSpeed,.07f);
+            speed = runSpeed;
         else
-            speed = Mathf.Lerp(speed, walkSpeed, .07f);
+            speed = walkSpeed;
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
