@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class fixCameraWidth : MonoBehaviour
 {
-    public float widthToBeSeen;
+    public float visibleWidth;
     void Update()
     {
-        Camera.main.orthographicSize = (float)(widthToBeSeen * Screen.height / Screen.width * 0.5);
+        Camera.main.orthographicSize = (float)(visibleWidth * Screen.height / Screen.width * 0.5);
     }
 }
