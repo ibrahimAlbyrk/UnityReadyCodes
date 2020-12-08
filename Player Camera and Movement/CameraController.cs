@@ -7,8 +7,6 @@ public class CameraController : MonoBehaviour
 {
     public float mouseSensitivity = 3f;
 
-    public Image CursorImage;
-
     Transform player;
 
     float camH, camV;
