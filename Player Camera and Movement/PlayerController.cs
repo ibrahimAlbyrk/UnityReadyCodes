@@ -36,10 +36,8 @@ public class PlayerController : MonoBehaviour
         else
             speed = walkSpeed;
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        Vector3 rot = transform.TransformDirection(new Vector3(x,0,z)).normalized;
+        Vector3 rot = transform.TransformDirection(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")));
+        rot.Normalize();
 
         rb.position += rot * speed * Time.deltaTime;
         #endregion
